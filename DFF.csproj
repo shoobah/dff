@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB181738-F108-4E38-B63C-1DFEF3DBCD36}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrtoCompare</RootNamespace>
+    <AssemblyName>OrtoCompare</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".jshintrc" />
+    <Content Include="js\select2-3.3.1\component.json" />
+    <Content Include="js\select2-3.3.1\LICENSE" />
+    <Content Include="js\select2-3.3.1\select2.jquery.json" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="ol\ol\animation.jsdoc" />
+    <Content Include="ol\ol\color\color.jsdoc" />
+    <Content Include="ol\ol\control.jsdoc" />
+    <Content Include="ol\ol\coordinate.jsdoc" />
+    <Content Include="ol\ol\easing.jsdoc" />
+    <Content Include="ol\ol\events\condition.jsdoc" />
+    <Content Include="ol\ol\extent.jsdoc" />
+    <Content Include="ol\ol\feature.jsdoc" />
+    <Content Include="ol\ol\format.jsdoc" />
+    <Content Include="ol\ol\geom\geom.jsdoc" />
+    <Content Include="ol\ol\has.jsdoc" />
+    <Content Include="ol\ol\interaction\interaction.jsdoc" />
+    <Content Include="ol\ol\layer\layer.jsdoc" />
+    <Content Include="ol\ol\loadingstrategy.jsdoc" />
+    <Content Include="ol\ol\proj\proj.jsdoc" />
+    <Content Include="ol\ol\render.jsdoc" />
+    <Content Include="ol\ol\renderer\webgl\webglmapcolor.glsl" />
+    <Content Include="ol\ol\renderer\webgl\webglmapdefault.glsl" />
+    <Content Include="ol\ol\renderer\webgl\webgltilelayer.glsl" />
+    <Content Include="ol\ol\render\canvas\canvas.jsdoc" />
+    <Content Include="ol\ol\render\webgl\webglimagecolor.glsl" />
+    <Content Include="ol\ol\render\webgl\webglimagedefault.glsl" />
+    <Content Include="ol\ol\source.jsdoc" />
+    <Content Include="ol\ol\source\wmssource.jsdoc" />
+    <Content Include="ol\ol\style.jsdoc" />
+    <Content Include="ol\ol\tilegrid.jsdoc" />
+    <Content Include="ol\ol\webgl\shader.mustache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="css\historiskaflygbilder.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\selectboxes.css" />
+    <Content Include="images\buttonBackground.png" />
+    <Content Include="images\legendBackground.png" />
+    <Content Include="images\logotypeTopCompact.png" />
+    <Content Include="images\none.png" />
+    <Content Include="images\sbSelector.png" />
+    <Content Include="images\sbToggle.png" />
+    <Content Include="images\sbToggleCompact.png" />
+    <Content Include="images\sbToggleCompactHover.png" />
+    <Content Include="images\sbToggleHover.png" />
+    <Content Include="images\select2.png" />
+    <Content Include="index.html" />
+    <Content Include="js\app.js" />
+    <Content Include="js\jquery-2.1.3.min.js" />
+    <Content Include="js\lodash.js" />
+    <Content Include="js\modernizr.js" />
+    <Content Include="js\proj4.js" />
+    <Content Include="js\select2-3.3.1\select2-spinner.gif" />
+    <Content Include="js\select2-3.3.1\select2.js" />
+    <Content Include="js\select2-3.3.1\select2.min.js" />
+    <Content Include="js\select2-3.3.1\select2.png" />
+    <Content Include="js\select2-3.3.1\select2x2.png" />
+    <Content Include="ol3\ol-debug.js" />
+    <Content Include="ol3\ol-deps.js" />
+    <Content Include="ol3\ol.js" />
+    <Content Include="ol\ol\animation.js" />
+    <Content Include="ol\ol\array.js" />
+    <Content Include="ol\ol\attribution.js" />
+    <Content Include="ol\ol\binary.js" />
+    <Content Include="ol\ol\canvasfunction.js" />
+    <Content Include="ol\ol\centerconstraint.js" />
+    <Content Include="ol\ol\collection.js" />
+    <Content Include="ol\ol\color\color.js" />
+    <Content Include="ol\ol\color\colormatrix.js" />
+    <Content Include="ol\ol\constraints.js" />
+    <Content Include="ol\ol\control\attributioncontrol.js" />
+    <Content Include="ol\ol\control\control.js" />
+    <Content Include="ol\ol\control\controldefaults.js" />
+    <Content Include="ol\ol\control\fullscreencontrol.js" />
+    <Content Include="ol\ol\control\mousepositioncontrol.js" />
+    <Content Include="ol\ol\control\overviewmapcontrol.js" />
+    <Content Include="ol\ol\control\rotatecontrol.js" />
+    <Content Include="ol\ol\control\scalelinecontrol.js" />
+    <Content Include="ol\ol\control\zoomcontrol.js" />
+    <Content Include="ol\ol\control\zoomslidercontrol.js" />
+    <Content Include="ol\ol\control\zoomtoextentcontrol.js" />
+    <Content Include="ol\ol\coordinate.js" />
+    <Content Include="ol\ol\css.js" />
+    <Content Include="ol\ol\deviceorientation.js" />
+    <Content Include="ol\ol\dom\dom.js" />
+    <Content Include="ol\ol\dom\input.js" />
+    <Content Include="ol\ol\easing.js" />
+    <Content Include="ol\ol\ellipsoid\ellipsoid.js" />
+    <Content Include="ol\ol\ellipsoid\wgs84ellipsoid.js" />
+    <Content Include="ol\ol\events\condition.js" />
+    <Content Include="ol\ol\extent.js" />
+    <Content Include="ol\ol\feature.js" />
+    <Content Include="ol\ol\featureoverlay.js" />
+    <Content Include="ol\ol\format\binaryfeatureformat.js" />
+    <Content Include="ol\ol\format\featureformat.js" />
+    <Content Include="ol\ol\format\format.js" />
+    <Content Include="ol\ol\format\geojsonformat.js" />
+    <Content Include="ol\ol\format\gmlformat.js" />
+    <Content Include="ol\ol\format\gml\gml2format.js" />
+    <Content Include="ol\ol\format\gml\gml3format.js" />
+    <Content Include="ol\ol\format\gml\gmlbaseformat.js" />
+    <Content Include="ol\ol\format\gpxformat.js" />
+    <Content Include="ol\ol\format\igcformat.js" />
+    <Content Include="ol\ol\format\jsonfeatureformat.js" />
+    <Content Include="ol\ol\format\kmlformat.js" />
+    <Content Include="ol\ol\format\osmxmlformat.js" />
+    <Content Include="ol\ol\format\owsformat.js" />
+    <Content Include="ol\ol\format\polylineformat.js" />
+    <Content Include="ol\ol\format\textfeatureformat.js" />
+    <Content Include="ol\ol\format\topojsonformat.js" />
+    <Content Include="ol\ol\format\wfsformat.js" />
+    <Content Include="ol\ol\format\wktformat.js" />
+    <Content Include="ol\ol\format\wmscapabilitiesformat.js" />
+    <Content Include="ol\ol\format\wmsgetfeatureinfoformat.js" />
+    <Content Include="ol\ol\format\xlinkformat.js" />
+    <Content Include="ol\ol\format\xmlfeatureformat.js" />
+    <Content Include="ol\ol\format\xmlformat.js" />
+    <Content Include="ol\ol\format\xsdformat.js" />
+    <Content Include="ol\ol\framestate.js" />
+    <Content Include="ol\ol\geolocation.js" />
+    <Content Include="ol\ol\geom\circle.js" />
+    <Content Include="ol\ol\geom\flat\areaflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\centerflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\closestflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\containsflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\deflateflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\flipflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\geodesicflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\inflateflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\interiorpointflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\interpolateflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\intersectsextent.js" />
+    <Content Include="ol\ol\geom\flat\lengthflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\orientflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\reverseflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\segmentsflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\simplifyflatgeom.js" />
+    <Content Include="ol\ol\geom\flat\transformflatgeom.js" />
+    <Content Include="ol\ol\geom\geometry.js" />
+    <Content Include="ol\ol\geom\geometrycollection.js" />
+    <Content Include="ol\ol\geom\linearring.js" />
+    <Content Include="ol\ol\geom\linestring.js" />
+    <Content Include="ol\ol\geom\multilinestring.js" />
+    <Content Include="ol\ol\geom\multipoint.js" />
+    <Content Include="ol\ol\geom\multipolygon.js" />
+    <Content Include="ol\ol\geom\point.js" />
+    <Content Include="ol\ol\geom\polygon.js" />
+    <Content Include="ol\ol\geom\simplegeometry.js" />
+    <Content Include="ol\ol\graticule.js" />
+    <Content Include="ol\ol\has.js" />
+    <Content Include="ol\ol\image.js" />
+    <Content Include="ol\ol\imagebase.js" />
+    <Content Include="ol\ol\imagecanvas.js" />
+    <Content Include="ol\ol\imageloadfunction.js" />
+    <Content Include="ol\ol\imagetile.js" />
+    <Content Include="ol\ol\imageurlfunction.js" />
+    <Content Include="ol\ol\interaction\doubleclickzoominteraction.js" />
+    <Content Include="ol\ol\interaction\draganddropinteraction.js" />
+    <Content Include="ol\ol\interaction\dragboxinteraction.js" />
+    <Content Include="ol\ol\interaction\dragpaninteraction.js" />
+    <Content Include="ol\ol\interaction\dragrotateandzoominteraction.js" />
+    <Content Include="ol\ol\interaction\dragrotateinteraction.js" />
+    <Content Include="ol\ol\interaction\dragzoominteraction.js" />
+    <Content Include="ol\ol\interaction\drawinteraction.js" />
+    <Content Include="ol\ol\interaction\interaction.js" />
+    <Content Include="ol\ol\interaction\interactiondefaults.js" />
+    <Content Include="ol\ol\interaction\keyboardpaninteraction.js" />
+    <Content Include="ol\ol\interaction\keyboardzoominteraction.js" />
+    <Content Include="ol\ol\interaction\modifyinteraction.js" />
+    <Content Include="ol\ol\interaction\mousewheelzoominteraction.js" />
+    <Content Include="ol\ol\interaction\pinchrotateinteraction.js" />
+    <Content Include="ol\ol\interaction\pinchzoominteraction.js" />
+    <Content Include="ol\ol\interaction\pointerinteraction.js" />
+    <Content Include="ol\ol\interaction\selectinteraction.js" />
+    <Content Include="ol\ol\kinetic.js" />
+    <Content Include="ol\ol\layer\heatmaplayer.js" />
+    <Content Include="ol\ol\layer\imagelayer.js" />
+    <Content Include="ol\ol\layer\layer.js" />
+    <Content Include="ol\ol\layer\layerbase.js" />
+    <Content Include="ol\ol\layer\layergroup.js" />
+    <Content Include="ol\ol\layer\tilelayer.js" />
+    <Content Include="ol\ol\layer\vectorlayer.js" />
+    <Content Include="ol\ol\loadingstrategy.js" />
+    <Content Include="ol\ol\map.js" />
+    <Content Include="ol\ol\mapbrowserevent.js" />
+    <Content Include="ol\ol\mapevent.js" />
+    <Content Include="ol\ol\math.js" />
+    <Content Include="ol\ol\object.js" />
+    <Content Include="ol\ol\observable.js" />
+    <Content Include="ol\ol\ol.js" />
+    <Content Include="ol\ol\overlay.js" />
+    <Content Include="ol\ol\pixel.js" />
+    <Content Include="ol\ol\pointer\eventsource.js" />
+    <Content Include="ol\ol\pointer\mousesource.js" />
+    <Content Include="ol\ol\pointer\mssource.js" />
+    <Content Include="ol\ol\pointer\nativesource.js" />
+    <Content Include="ol\ol\pointer\pointerevent.js" />
+    <Content Include="ol\ol\pointer\pointereventhandler.js" />
+    <Content Include="ol\ol\pointer\touchsource.js" />
+    <Content Include="ol\ol\proj\common.js" />
+    <Content Include="ol\ol\proj\epsg3857projection.js" />
+    <Content Include="ol\ol\proj\epsg4326projection.js" />
+    <Content Include="ol\ol\proj\proj.js" />
+    <Content Include="ol\ol\renderer\canvas\canvasimagelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\canvas\canvaslayerrenderer.js" />
+    <Content Include="ol\ol\renderer\canvas\canvasmaprenderer.js" />
+    <Content Include="ol\ol\renderer\canvas\canvastilelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\canvas\canvasvectorlayerrenderer.js" />
+    <Content Include="ol\ol\renderer\dom\domimagelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\dom\domlayerrenderer.js" />
+    <Content Include="ol\ol\renderer\dom\dommaprenderer.js" />
+    <Content Include="ol\ol\renderer\dom\domtilelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\dom\domvectorlayerrenderer.js" />
+    <Content Include="ol\ol\renderer\layerrenderer.js" />
+    <Content Include="ol\ol\renderer\maprenderer.js" />
+    <Content Include="ol\ol\renderer\webgl\webglimagelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\webgl\webgllayerrenderer.js" />
+    <Content Include="ol\ol\renderer\webgl\webglmapcolorshader.js" />
+    <Content Include="ol\ol\renderer\webgl\webglmapdefaultshader.js" />
+    <Content Include="ol\ol\renderer\webgl\webglmaprenderer.js" />
+    <Content Include="ol\ol\renderer\webgl\webgltilelayerrenderer.js" />
+    <Content Include="ol\ol\renderer\webgl\webgltilelayershader.js" />
+    <Content Include="ol\ol\renderer\webgl\webglvectorlayerrenderer.js" />
+    <Content Include="ol\ol\render\box.js" />
+    <Content Include="ol\ol\render\canvas\canvas.js" />
+    <Content Include="ol\ol\render\canvas\canvasimmediate.js" />
+    <Content Include="ol\ol\render\canvas\canvasreplay.js" />
+    <Content Include="ol\ol\render\ireplay.js" />
+    <Content Include="ol\ol\render\ivectorcontext.js" />
+    <Content Include="ol\ol\render\renderevent.js" />
+    <Content Include="ol\ol\render\vector.js" />
+    <Content Include="ol\ol\render\webgl\webglimagecolorshader.js" />
+    <Content Include="ol\ol\render\webgl\webglimagedefaultshader.js" />
+    <Content Include="ol\ol\render\webgl\webglimmediate.js" />
+    <Content Include="ol\ol\render\webgl\webglreplay.js" />
+    <Content Include="ol\ol\resolutionconstraint.js" />
+    <Content Include="ol\ol\rotationconstraint.js" />
+    <Content Include="ol\ol\size.js" />
+    <Content Include="ol\ol\source\bingmapssource.js" />
+    <Content Include="ol\ol\source\clustersource.js" />
+    <Content Include="ol\ol\source\formatvectorsource.js" />
+    <Content Include="ol\ol\source\geojsonsource.js" />
+    <Content Include="ol\ol\source\gpxsource.js" />
+    <Content Include="ol\ol\source\igcsource.js" />
+    <Content Include="ol\ol\source\imagecanvassource.js" />
+    <Content Include="ol\ol\source\imagemapguidesource.js" />
+    <Content Include="ol\ol\source\imagesource.js" />
+    <Content Include="ol\ol\source\imagestaticsource.js" />
+    <Content Include="ol\ol\source\imagevectorsource.js" />
+    <Content Include="ol\ol\source\imagewmssource.js" />
+    <Content Include="ol\ol\source\kmlsource.js" />
+    <Content Include="ol\ol\source\mapquestsource.js" />
+    <Content Include="ol\ol\source\osmsource.js" />
+    <Content Include="ol\ol\source\osmxmlsource.js" />
+    <Content Include="ol\ol\source\servervectorsource.js" />
+    <Content Include="ol\ol\source\source.js" />
+    <Content Include="ol\ol\source\stamensource.js" />
+    <Content Include="ol\ol\source\staticvectorsource.js" />
+    <Content Include="ol\ol\source\tiledebugsource.js" />
+    <Content Include="ol\ol\source\tileimagesource.js" />
+    <Content Include="ol\ol\source\tilejsonsource.js" />
+    <Content Include="ol\ol\source\tilesource.js" />
+    <Content Include="ol\ol\source\tileutfgridsource.js" />
+    <Content Include="ol\ol\source\tilevectorsource.js" />
+    <Content Include="ol\ol\source\tilewmssource.js" />
+    <Content Include="ol\ol\source\topojsonsource.js" />
+    <Content Include="ol\ol\source\vectorsource.js" />
+    <Content Include="ol\ol\source\wmssource.js" />
+    <Content Include="ol\ol\source\wmtssource.js" />
+    <Content Include="ol\ol\source\xyzsource.js" />
+    <Content Include="ol\ol\source\zoomifysource.js" />
+    <Content Include="ol\ol\sphere\normal.js" />
+    <Content Include="ol\ol\sphere\sphere.js" />
+    <Content Include="ol\ol\sphere\wgs84sphere.js" />
+    <Content Include="ol\ol\structs\buffer.js" />
+    <Content Include="ol\ol\structs\checksum.js" />
+    <Content Include="ol\ol\structs\integerset.js" />
+    <Content Include="ol\ol\structs\lrucache.js" />
+    <Content Include="ol\ol\structs\priorityqueue.js" />
+    <Content Include="ol\ol\structs\rbush.js" />
+    <Content Include="ol\ol\style\atlasmanager.js" />
+    <Content Include="ol\ol\style\circlestyle.js" />
+    <Content Include="ol\ol\style\fillstyle.js" />
+    <Content Include="ol\ol\style\iconstyle.js" />
+    <Content Include="ol\ol\style\imagestyle.js" />
+    <Content Include="ol\ol\style\regularshapestyle.js" />
+    <Content Include="ol\ol\style\strokestyle.js" />
+    <Content Include="ol\ol\style\style.js" />
+    <Content Include="ol\ol\style\textstyle.js" />
+    <Content Include="ol\ol\tile.js" />
+    <Content Include="ol\ol\tilecache.js" />
+    <Content Include="ol\ol\tilecoord.js" />
+    <Content Include="ol\ol\tilegrid\tilegrid.js" />
+    <Content Include="ol\ol\tilegrid\wmtstilegrid.js" />
+    <Content Include="ol\ol\tilegrid\xyztilegrid.js" />
+    <Content Include="ol\ol\tilegrid\zoomifytilegrid.js" />
+    <Content Include="ol\ol\tileloadfunction.js" />
+    <Content Include="ol\ol\tilequeue.js" />
+    <Content Include="ol\ol\tilerange.js" />
+    <Content Include="ol\ol\tileurlfunction.js" />
+    <Content Include="ol\ol\transformfunction.js" />
+    <Content Include="ol\ol\vec\mat4.js" />
+    <Content Include="ol\ol\view.js" />
+    <Content Include="ol\ol\webgl\buffer.js" />
+    <Content Include="ol\ol\webgl\context.js" />
+    <Content Include="ol\ol\webgl\shader.js" />
+    <Content Include="ol\ol\webgl\webgl.js" />
+    <Content Include="ol\ol\xml.js" />
+    <Content Include="settings.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>10517</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:10517/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
