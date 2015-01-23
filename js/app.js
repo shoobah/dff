@@ -9,26 +9,33 @@ var maps = (function () {
     var mapControls = function (opt_options) {
 
         var options = opt_options || {};
-        var anchor = $('<span>').html('N').addClass('map-button');
+        var element = $('<select>').addClass('ol-unselectable');
+        var n = 0;
+
+        _.forEach(options.layers, function (layer) {
+            element.append($('<option>').html(layer.get('title')));
+            n += 1;
+        });
 
         var _this = this;
         var handleViewLayer = function (e) {
             // prevent #rotate-north anchor from getting appended to the url
             e.preventDefault();
-            var layers = _this.getMap().getLayers();
-            console.log('layers: ', layers); //DEBUG: Anders Sjöberg a
-            layers.item(1).setVisible(false);
+            var map = _this.getMap();
+            var layers = map.getLayers();
+
+            layers.setAt(options.index, options.layers[e.target.selectedOptions[0].index]);
+            console.log('map.getLayers(): ', map.getLayers()); //DEBUG: Anders Sjöberg 2015-01-23 00:00
+
+            map.render();
         };
 
-        anchor.on('click', handleViewLayer);
-
-        var element = $('<div>').addClass('rotate-north ol-unselectable').append(anchor);
+        element.on('change', handleViewLayer);
 
         ol.control.Control.call(this, {
             element: element[0],
             target: options.target
         });
-
     };
     ol.inherits(mapControls, ol.control.Control);
 
@@ -39,21 +46,25 @@ var maps = (function () {
                 extent: mapInfo.extent
             }),
             layers = [];
+        console.log('mapInfo.layers: ', mapInfo.layers); //DEBUG: Anders Sjöberg 2015-01-23 00:00
 
-        for (var i = 0; i < 2; i += 1) {
+        _.forOwn(mapInfo.layers, function (layer) {
+            var newLayer = new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: layer.url,
+                    wrapX: false,
+                    projection: pixelProj
+                }),
+                preload: 6
+            });
+            newLayer.set('title', layer.name);
             layers.push(
-                new ol.layer.Tile({
-                    source: new ol.source.XYZ({
-                        url: mapInfo.layers[i].url,
-                        wrapX: false,
-                        projection: pixelProj
-                    }),
-                    preload: 6,
-                    title: mapInfo.layers[i].name
-                })
+                newLayer
             );
-        };
+        });
+
         console.log('layers', layers);
+
         var view = new ol.View({
                 center: [mapInfo.extent[0] / 2, -mapInfo.extent[1] / 2],
                 //extent: [-30000, -10000, 60000, 30000],
@@ -72,15 +83,19 @@ var maps = (function () {
                 controls: [
                     new ol.control.Zoom(),
                     new ol.control.ZoomToExtent(),
-                    new mapControls()
+                    new mapControls({
+                        layers: layers,
+                        index: 0
+                    }),
+                    new mapControls({
+                        layers: layers,
+                        index: 1
+                    })
                 ]
             }),
-            layer_b = map.getLayers().item(1),
             swipe = document.getElementById('swipe');
 
-        //map.addLayer(debugLayer);
-
-        layer_b.on('precompose', function (event) {
+        map.getLayers().item(1).on('precompose', function (event) {
             var context = event.context;
             var width = context.canvas.width * (swipe.value / 100);
 
@@ -90,7 +105,7 @@ var maps = (function () {
             context.clip();
         });
 
-        layer_b.on('postcompose', function (event) {
+        map.getLayers().item(1).on('postcompose', function (event) {
             var context = event.context;
             context.restore();
         });
@@ -100,16 +115,10 @@ var maps = (function () {
         }, false);
     };
 
-    var setLayerVisible = function (layerName) {
-
-    };
-
     var mapChanged = function (event) {
         console.log('event.data.key', event.data.key);
         event.preventDefault();
         $('#map').html('');
-        $('#selLayer1').html('');
-        $('#selLayer2').html('');
         var theMapInfo = event.data.info[event.data.key];
         showMap(theMapInfo);
         _.forEach(theMapInfo.layers, function (layerInfo) {

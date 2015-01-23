@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".jshintrc" />
+    <Content Include="css\dff.css" />
     <Content Include="js\select2-3.3.1\component.json" />
     <Content Include="js\select2-3.3.1\LICENSE" />
     <Content Include="js\select2-3.3.1\select2.jquery.json" />
@@ -96,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="css\historiskaflygbilder.css" />
     <Content Include="css\normalize.css" />
     <Content Include="css\selectboxes.css" />
     <Content Include="images\buttonBackground.png" />
