@@ -1,0 +1,6 @@
+D:\Git\dff\bin\OrtoCompare.dll.config
+D:\Git\dff\bin\OrtoCompare.dll
+D:\Git\dff\bin\OrtoCompare.pdb
+D:\Git\dff\obj\Debug\DFF.csprojResolveAssemblyReference.cache
+D:\Git\dff\obj\Debug\OrtoCompare.dll
+D:\Git\dff\obj\Debug\OrtoCompare.pdb

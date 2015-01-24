@@ -14,7 +14,7 @@
     <RootNamespace>OrtoCompare</RootNamespace>
     <AssemblyName>OrtoCompare</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -399,7 +399,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>10517</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:10517/</IISUrl>
+          <IISUrl>http://localhost/DFF</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

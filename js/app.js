@@ -12,8 +12,12 @@ var maps = (function () {
         var element = $('<select>').addClass('ol-unselectable');
         var n = 0;
 
-        _.forEach(options.layers, function (layer) {
-            element.append($('<option>').html(layer.get('title')));
+        _.forEach(options.mapInfo.layers, function (layer) {
+            var option = $('<option>').html(layer.name);
+            if (n === options.index) {
+                option.attr('selected', 'true');
+            }
+            element.append(option);
             n += 1;
         });
 
@@ -23,10 +27,39 @@ var maps = (function () {
             e.preventDefault();
             var map = _this.getMap();
             var layers = map.getLayers();
+            var pixelProj = new ol.proj.Projection({
+                code: 'pixel',
+                units: 'pixels',
+                extent: options.mapInfo.extent
+            });
+            var layerInfo = options.mapInfo.layers[e.target.selectedOptions[0].index];
+            var newLayer = new ol.layer.Tile({
+                source: new ol.source.XYZ({
+                    url: layerInfo.url,
+                    wrapX: false,
+                    projection: pixelProj
+                }),
+                preload: 6
+            });
+            newLayer.set('title', layerInfo.name);
 
-            layers.setAt(options.index, options.layers[e.target.selectedOptions[0].index]);
+            layers.setAt(options.index, newLayer);
             console.log('map.getLayers(): ', map.getLayers()); //DEBUG: Anders Sjöberg 2015-01-23 00:00
 
+            map.getLayers().item(1).on('precompose', function (event) {
+                var context = event.context;
+                var width = context.canvas.width * (swipe.value / 100);
+
+                context.save();
+                context.beginPath();
+                context.rect(width, 0, context.canvas.width - width, context.canvas.height);
+                context.clip();
+            });
+
+            map.getLayers().item(1).on('postcompose', function (event) {
+                var context = event.context;
+                context.restore();
+            });
             map.render();
         };
 
@@ -84,12 +117,12 @@ var maps = (function () {
                     new ol.control.Zoom(),
                     new ol.control.ZoomToExtent(),
                     new mapControls({
-                        layers: layers,
-                        index: 0
+                        index: 0,
+                        mapInfo: mapInfo
                     }),
                     new mapControls({
-                        layers: layers,
-                        index: 1
+                        index: 1,
+                        mapInfo: mapInfo
                     })
                 ]
             }),

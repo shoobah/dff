@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "wrappedProject": "../../DFF.csproj",
+      "bin": {
+        "assembly": "../../obj/{configuration}/OrtoCompare.dll",
+        "pdb": "../../obj/{configuration}/OrtoCompare.pdb"
+      }
+    }
+  }
+}
