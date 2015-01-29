@@ -1,17 +1,166 @@
-﻿body {
+﻿body { }
+
+.wide { width: 100%; }
+
+#map { height: 80%; }
+
+.map-button {
+    border: solid 1px lime;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
 }
 
-.wide {
+/* Generics */
+
+body {
+    font: normal 76% Verdana, helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
     width: 100%;
 }
 
-#map{
-	height: 80%;
+html, body { height: 100%; }
+
+@media screen and (min-width: 0) {
+    body, html { height: 100%; }
 }
 
-.map-button {
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border: solid 1px lime;
+:focus { outline: none !important; }
+
+button::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="file"] > input[type="button"]::-moz-focus-inner { border: 1px dotted transparent !important; }
+
+/* Header */
+
+div.sercxiHeaderContainer {
+    background: url(/images/toolsBackground.png) repeat-x scroll 0 0 #f2f2f2;
+    height: 30px;
+    position: relative;
+    width: 100%;
+}
+
+/* Header tools */
+
+
+.sercxiToolsContainer {
+    height: 30px;
+    position: absolute;
+    right: 50%;
+    top: 4px;
+    transform: translateX(50%);
+}
+
+ul.sercxiTools {
+    background: url(/images/toolsBackground.png) repeat-x scroll 0 0 #f2f2f2;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    z-index: 0;
+}
+
+ul.sercxiTools li {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+ul.sercxiTools li a {
+    display: inline-block;
+    min-width: 16px;
+}
+
+ul.sercxiTools li.sercxiToolsHelp a { background: url(/images/icoHelp.png) 0 50% no-repeat; }
+
+ul.sercxiTools li a {
+    color: #000;
+    display: block;
+    font-size: 0.9em;
+    line-height: 31px;
+    padding: 0 10px 0 20px;
+    text-decoration: none;
+}
+
+ul.sercxiTools li.sercxiActive a { font-weight: bold; }
+
+/* Logotype */
+
+p.sercxiLogotype {
+    left: 10px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 5px;
+}
+
+p.sercxiLogotype img { border: none; }
+
+/* Map */
+
+#map1 {
+    border-top: 1px solid #9BA0A5;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    width: 50%;
+}
+
+#map2 {
+    border-top: 1px solid #9BA0A5;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    width: 50%;
+}
+
+.olControlLayerSwitcher .layersDiv {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-bottom-left-radius: 5px;
+    color: #515151;
+    padding: 6px 6px 2px 6px !important;
+}
+
+.olControlLayerSwitcher .layersDiv .baseLayersDiv, .olControlLayerSwitcher .layersDiv .dataLayersDiv {
+    padding-bottom: 0;
+    padding-left: 10px !important;
+}
+
+.olControlLayerSwitcher .layersDiv .baseLayersDiv, .olControlLayerSwitcher .layersDiv .olButton {
+    display: inline-block;
+    margin-bottom: 5px !important;
+}
+
+.olControlLayerSwitcher .layersDiv .baseLayersDiv, .olControlLayerSwitcher .layersDiv .labelSpan { margin-left: 5px; }
+
+.sercxiToolsContainer .select2-container { margin: 3px; }
+
+.olControlLayerSwitcher {
+    min-width: 10em;
+    top: -5px !important;
+    width: auto !important;
+}
+
+.baseLayersDiv {
+    background-color: #fff;
+    border: 1px solid #a6aaaf;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: none;
+    display: block !important;
+    margin: 0 !important;
+    padding: 5px 10px 5px 10px !important;
+}
+
+.baseLbl {
+    background-color: #fff;
+    border: 1px solid #a6aaaf;
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: block !important;
+    margin: 0 0 -1px 0 !important;
+    padding: 5px 10px 0 10px;
 }

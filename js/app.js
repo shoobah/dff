@@ -6,11 +6,18 @@ goog.require('ol.source.TileJSON');
 goog.require('ol.source.XYZ');
 
 var maps = (function () {
-    var mapControls = function (opt_options) {
+    //var swipe = $('#swipe');
+    var settings = {};
+    var mapControls = function (optOptions) {
+        var options = optOptions || {},
+            element = $('<select>').addClass('ol-unselectable'),
+            n = 0;
 
-        var options = opt_options || {};
-        var element = $('<select>').addClass('ol-unselectable');
-        var n = 0;
+        if (options.alignment === 'left') {
+            element.addClass('ol-align-left');
+        } else if (options.alignment === 'right') {
+            element.addClass('ol-align-right');
+        }
 
         _.forEach(options.mapInfo.layers, function (layer) {
             var option = $('<option>').html(layer.name);
@@ -48,7 +55,9 @@ var maps = (function () {
 
             map.getLayers().item(1).on('precompose', function (event) {
                 var context = event.context;
-                var width = context.canvas.width * (swipe.value / 100);
+                var sliderValue = $('#slider').slider('option', 'value');
+
+                var width = context.canvas.width * (sliderValue / 100);
 
                 context.save();
                 context.beginPath();
@@ -79,7 +88,6 @@ var maps = (function () {
                 extent: mapInfo.extent
             }),
             layers = [];
-        console.log('mapInfo.layers: ', mapInfo.layers); //DEBUG: Anders Sjöberg 2015-01-23 00:00
 
         _.forOwn(mapInfo.layers, function (layer) {
             var newLayer = new ol.layer.Tile({
@@ -95,12 +103,10 @@ var maps = (function () {
                 newLayer
             );
         });
-
-        console.log('layers', layers);
+        console.log('mapInfo: ', mapInfo); //DEBUG: Anders Sjöberg 2015-01-29 00:00
 
         var view = new ol.View({
-                center: [mapInfo.extent[0] / 2, -mapInfo.extent[1] / 2],
-                //extent: [-30000, -10000, 60000, 30000],
+                center: [mapInfo.extent[2] / 2, -mapInfo.extent[3] / 2],
                 zoom: 4,
                 minZoom: 1,
                 maxZoom: 8,
@@ -118,20 +124,21 @@ var maps = (function () {
                     new ol.control.ZoomToExtent(),
                     new mapControls({
                         index: 0,
-                        mapInfo: mapInfo
+                        mapInfo: mapInfo,
+                        alignment: 'left'
                     }),
                     new mapControls({
                         index: 1,
-                        mapInfo: mapInfo
+                        mapInfo: mapInfo,
+                        alignment: 'right'
                     })
                 ]
-            }),
-            swipe = document.getElementById('swipe');
+            });
 
         map.getLayers().item(1).on('precompose', function (event) {
             var context = event.context;
-            var width = context.canvas.width * (swipe.value / 100);
-
+            var sliderValue = $('#slider').slider('option', 'value');
+            var width = context.canvas.width * (sliderValue / 100);
             context.save();
             context.beginPath();
             context.rect(width, 0, context.canvas.width - width, context.canvas.height);
@@ -143,16 +150,25 @@ var maps = (function () {
             context.restore();
         });
 
-        swipe.addEventListener('input', function () {
+        var test = function (event, ui) {
             map.render();
-        }, false);
+        };
+
+        $('#slider').slider({
+            slide: test,
+            min: 0,
+            max: 100,
+            value: 50
+        });
     };
 
     var mapChanged = function (event) {
-        console.log('event.data.key', event.data.key);
+        console.log('event', event);
+        var mapName = event.target.selectedOptions[0].value;
+        console.log('event.target.selectedOptions[0].value: ', mapName); //DEBUG: Anders Sjöberg 2015-01-29 00:00
         event.preventDefault();
         $('#map').html('');
-        var theMapInfo = event.data.info[event.data.key];
+        var theMapInfo = settings[mapName];
         showMap(theMapInfo);
         _.forEach(theMapInfo.layers, function (layerInfo) {
             $('#selLayer1').append($('<option/>').attr('value', layerInfo.name).html(layerInfo.name));
@@ -163,31 +179,27 @@ var maps = (function () {
     };
 
     var init = function (data) {
-        _.forOwn(data, function (num, key) {
-            var mapSelectItem = $('#selMap').append($('<option/>').attr('value', key).html(key));
-            mapSelectItem.on('change', {
-                info: data,
-                key: key
-            }, mapChanged);
+        settings = data;
+        _.forOwn(data, function (item, key) {
+            $('#selMap').append($('<option/>').attr('value', key).html(item.title));
         });
+        $('#selMap').on('change', mapChanged);
     };
 
     return {
         show: showMap,
-        init: init
+        init: init,
+        settings: settings
     };
 }());
 
 $(function () {
     'use strict';
     $.getJSON('settings.js', function (data) {
-            maps.show(data.sälen);
             maps.init(data);
+            maps.show(data.sälen);
         })
         .fail(function (err) {
             console.log('FAIL!', err);
-        }); // $('#map').change();
-    $('#selLayer1').on('change', function () {
-
-    });
+        });
 });
