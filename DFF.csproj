@@ -64,6 +64,7 @@
     <Content Include=".jshintrc" />
     <Content Include="css\dff.css" />
     <Content Include="css\ol.css" />
+    <Content Include="images\progress.gif" />
     <Content Include="js\jquery-ui-1.11.2.custom\external\jquery\jquery.js" />
     <Content Include="js\jquery-ui-1.11.2.custom\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="js\jquery-ui-1.11.2.custom\images\ui-bg_diagonals-thick_20_666666_40x40.png" />

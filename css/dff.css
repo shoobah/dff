@@ -167,3 +167,11 @@ p.sercxiLogotype img { border: none; }
     margin: 0 0 -1px 0 !important;
     padding: 5px 10px 0 10px;
 }
+
+#progress {
+    float: right;
+    position: relative;
+    right: 8px;
+    top: 8px;
+    display: none;
+}

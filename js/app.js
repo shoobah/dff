@@ -79,6 +79,7 @@ var maps = (function () {
     ol.inherits(mapControls, ol.control.Control);
 
     var showMap = function (mapInfo) {
+        var progress = $('#progress');
         var pixelProj = new ol.proj.Projection({
                 code: 'pixel',
                 units: 'pixels',
@@ -94,30 +95,83 @@ var maps = (function () {
                     projection: pixelProj
                 })
             });
+
+            newLayer.getSource().setTileLoadFunction((function () {
+                var numLoadingTiles = 0;
+                var tileLoadFn = newLayer.getSource().getTileLoadFunction();
+                return function (tile, src) {
+                    if (numLoadingTiles === 0) {
+                        progress.show();
+                    }
+                    ++numLoadingTiles;
+                    var image = tile.getImage();
+                    image.onload = image.onerror = function () {
+                        --numLoadingTiles;
+                        if (numLoadingTiles === 0) {
+                            progress.hide();
+                        }
+                    };
+                    tileLoadFn(tile, src);
+                };
+            })());
+
             newLayer.set('title', layer.name);
             layers.push(
                 newLayer
             );
         });
-        console.log('mapInfo: ', mapInfo); //DEBUG: Anders Sjöberg 2015-01-29 00:00
+        var vectorSource = new ol.source.Vector({
+            //create empty vector
+        });
+
+        var iconFeature = new ol.Feature({
+            geometry: new ol.geom.Point([mapInfo.extent[0], mapInfo.extent[1]]),
+            name: 'Ena hörnet'
+        });
+        vectorSource.addFeature(iconFeature);
+
+        iconFeature = new ol.Feature({
+            geometry: new ol.geom.Point([mapInfo.extent[2], mapInfo.extent[3]]),
+            name: 'Andra hörnet'
+        });
+        vectorSource.addFeature(iconFeature);
+
+        var iconStyle1 = new ol.style.Style({
+            image: new ol.style.Icon(/** @type {olx.style.IconOptions} */({
+                anchor: [0, 0],
+                scale: 0.2,
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'pixels',
+                opacity: 1,
+                src: 'images/Blue-map-pin.png'
+            }))
+        });
+
+
+        var vectorLayer = new ol.layer.Vector({
+            source: vectorSource,
+            style: iconStyle1
+        });
 
         var view = new ol.View({
                 center: [mapInfo.extent[2] / 2, -mapInfo.extent[3]/2],
                 zoom: 4,
                 minZoom: 1,
-                maxZoom: 8,
+                maxZoom: mapInfo.maxZoom,
                 projection: pixelProj
             }),
 
             map = new ol.Map({
-                layers: [layers[0], layers[1]],
+                layers: [layers[0], layers[1], vectorLayer],
                 target: 'map',
                 units: 'm',
                 view: view,
                 renderer: 'canvas',
                 controls: [
                     new ol.control.Zoom(),
-                    new ol.control.ZoomToExtent(),
+                    new ol.control.ZoomToExtent({
+                        extent: [0,0,10000,10000]
+                    }),
                     new mapControls({
                         index: 0,
                         mapInfo: mapInfo,
@@ -130,9 +184,11 @@ var maps = (function () {
                     })
                 ]
             });
-        var size = $('#' + map.getTarget());
-        console.log('size: ', size); //DEBUG: Anders Sjöberg 2015-01-30 00:00
-        
+        map.on('moveend', function () {
+            var size = map.getView().calculateExtent(map.getSize());
+            console.log('size: ', size); //DEBUG: Anders Sjöberg 2015-01-30 00:00
+        });
+
         map.getLayers().item(1).on('precompose', function (event) {
             var context = event.context;
             var sliderValue = $('#slider').slider('option', 'value');
@@ -151,6 +207,8 @@ var maps = (function () {
         var test = function (event, ui) {
             map.render();
         };
+
+
 
         $('#slider').slider({
             slide: test,

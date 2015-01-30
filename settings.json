@@ -2,6 +2,7 @@
     "sälen": {
         "title": "Sälen",
         "extent": [0, 0, 50176, 30208],
+        "maxZoom":8,
         "layers": [{
             "url": "mapimages/salen/salen_1956/{z}/{x}/{-y}.jpg",
             "name": "Sälen 1956"
@@ -17,6 +18,7 @@
     "sälen-node": {
         "title": "Sälen - node server",
         "extent": [0, 0, 50176, 30208],
+        "maxZoom":8,
         "layers": [{
             "url": "http://localhost:8090/salen/salen_1956/{z}/{x}/{-y}.jpg",
             "name": "Sälen 1956"
@@ -32,8 +34,9 @@
     "åre": {
         "title": "Åre",
         "extent": [0, 0, 39936, 39936],
+        "maxZoom":8,
         "layers": [{
-            "url": "mapimages/are/1965jpg/{z}/{x}/{-y}.jpg",    
+            "url": "mapimages/are/1965jpg/{z}/{x}/{-y}.jpg",
             "name": "Åre 1965"
         }, {
             "url": "mapimages/are/2013jpg/{z}/{x}/{-y}.jpg",
@@ -69,6 +72,7 @@
     {
         "title":"Salabranden 2014",
         "extent":[0,0,99840,79872],
+        "maxZoom":9,
         "layers":[
         {
             "url":"http://www.lantmateriet.se/External/ortodemo/Salabranden2014/branden_rgb/rgb_fore/{z}/{x}/{-y}.jpg",
