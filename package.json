@@ -1,0 +1,24 @@
+{
+  "name": "DFF",
+  "version": "0.0.1",
+  "description": "Viewer for ortodata images at Swedish Survey",
+  "main": "-",
+  "dependencies": {
+    "node-static": "^0.7.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shoobah/dff.git"
+  },
+  "author": "Anders Sjöberg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoobah/dff/issues"
+  },
+  "homepage": "https://github.com/shoobah/dff"
+}

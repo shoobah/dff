@@ -1,6 +1,9 @@
 ﻿body { }
 
-.wide { width: 100%; }
+.wide {
+    height: 100%;
+    width: 100%;
+}
 
 #map { height: 80%; }
 

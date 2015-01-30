@@ -6,7 +6,6 @@ goog.require('ol.source.TileJSON');
 goog.require('ol.source.XYZ');
 
 var maps = (function () {
-    //var swipe = $('#swipe');
     var settings = {};
     var mapControls = function (optOptions) {
         var options = optOptions || {},
@@ -30,7 +29,6 @@ var maps = (function () {
 
         var _this = this;
         var handleViewLayer = function (e) {
-            // prevent #rotate-north anchor from getting appended to the url
             e.preventDefault();
             var map = _this.getMap();
             var layers = map.getLayers();
@@ -51,7 +49,6 @@ var maps = (function () {
             newLayer.set('title', layerInfo.name);
 
             layers.setAt(options.index, newLayer);
-            console.log('map.getLayers(): ', map.getLayers()); //DEBUG: Anders Sjöberg 2015-01-23 00:00
 
             map.getLayers().item(1).on('precompose', function (event) {
                 var context = event.context;
@@ -95,8 +92,7 @@ var maps = (function () {
                     url: layer.url,
                     wrapX: false,
                     projection: pixelProj
-                }),
-                preload: 6
+                })
             });
             newLayer.set('title', layer.name);
             layers.push(
@@ -106,7 +102,7 @@ var maps = (function () {
         console.log('mapInfo: ', mapInfo); //DEBUG: Anders Sjöberg 2015-01-29 00:00
 
         var view = new ol.View({
-                center: [mapInfo.extent[2] / 2, -mapInfo.extent[3] / 2],
+                center: [mapInfo.extent[2] / 2, -mapInfo.extent[3]/2],
                 zoom: 4,
                 minZoom: 1,
                 maxZoom: 8,
@@ -134,7 +130,9 @@ var maps = (function () {
                     })
                 ]
             });
-
+        var size = $('#' + map.getTarget());
+        console.log('size: ', size); //DEBUG: Anders Sjöberg 2015-01-30 00:00
+        
         map.getLayers().item(1).on('precompose', function (event) {
             var context = event.context;
             var sliderValue = $('#slider').slider('option', 'value');
@@ -144,7 +142,7 @@ var maps = (function () {
             context.rect(width, 0, context.canvas.width - width, context.canvas.height);
             context.clip();
         });
-
+        
         map.getLayers().item(1).on('postcompose', function (event) {
             var context = event.context;
             context.restore();
@@ -194,8 +192,16 @@ var maps = (function () {
 }());
 
 $(function () {
-    'use strict';
-    $.getJSON('settings.js', function (data) {
+    var setSize = function () {
+        //$('#log').append('<div>Handler for .resize() called.</div>');
+        var canvasheight = $('#map').parent().css('height');
+        var canvaswidth = $('#map').parent().css('width');
+        $('#map').css('height', canvasheight);
+        $('#map').css('width', canvaswidth);
+    };
+    setSize();
+    $(window).resize(setSize);
+    $.getJSON('settings.json', function (data) {
             maps.init(data);
             maps.show(data.sälen);
         })
